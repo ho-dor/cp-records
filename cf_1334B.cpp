@@ -17,12 +17,13 @@ int main(){
 	//c_p_c();
 
 	//TODO
-	
-	//ll t;
-	//cin>>t;
-	//while(t--){
 
-	//}
+	ll t;
+	cin>>t;
+	while(t--){
+		int n,x;
+		cin>>n>>x;
+	}
 
 	return 0;
 	}

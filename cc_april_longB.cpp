@@ -16,13 +16,30 @@ int main(){
 	
 	//c_p_c();
 
-	//TODO
 	
-	//ll t;
-	//cin>>t;
-	//while(t--){
+	ll t;
+	cin>>t;
+	while(t--){
+		ll n;
+		cin>>n;
+		vector<ll> v(n);
+		for(int i=0;i<n;i++){
+			cin>>v[i];
+		}
 
-	//}
+		sort(v.begin(),v.end(), greater<int>());
+
+		ll sum=0;
+
+		for(int i=0;i<n;i++){
+			if((v[i]-i)>0)
+				sum+=v[i]-i;
+		}
+
+		cout<<(sum%1000000007)<<'\n';
+	}
+
+	
 
 	return 0;
 	}

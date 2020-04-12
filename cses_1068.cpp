@@ -22,7 +22,7 @@ typedef stack<int> st;
 #define mp make_pair
 
 #define rep(i,a,b) for (int i = a; i <= b; i++)
-#define bitset<n> b<n>
+//#define bitset<n> b<n>
 
 /* typedef tree<int,null_type,less<int>,rb_tree_tag,
 tree_order_statistics_node_update> indexed_set; */
@@ -40,6 +40,18 @@ int main(){
 
 	ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 
+	ll n;
+	cin>>n;
+	cout<<n<<" ";
+	while(n!=1){
+		if(n&1){
+			n = n*3+1;
+		}else{
+			n=n/2;
+		}
+		cout<<n<<" ";
+	}
+
 	//indexed_set s;
 	//s.insert(2);
 	//s.insert(3);
@@ -50,6 +62,11 @@ int main(){
 	//s.order_of_key(7)
 	
 	//c_p_c();
+
+	//__builtin_clz(x): the number of zeros at the beginning of the number
+   // __builtin_ctz(x): the number of zeros at the end of the number
+   // __builtin_popcount(x): the number of ones in the number
+   // __builtin_parity(x): the parity (even or odd) of the number of ones
 
 	
 	//ll t;

@@ -22,7 +22,7 @@ typedef stack<int> st;
 #define mp make_pair
 
 #define rep(i,a,b) for (int i = a; i <= b; i++)
-#define bitset<n> b<n>
+//#define bitset<n> b<n>
 
 /* typedef tree<int,null_type,less<int>,rb_tree_tag,
 tree_order_statistics_node_update> indexed_set; */
@@ -51,7 +51,38 @@ int main(){
 	
 	//c_p_c();
 
-	
+	//__builtin_clz(x): the number of zeros at the beginning of the number
+   // __builtin_ctz(x): the number of zeros at the end of the number
+   // __builtin_popcount(x): the number of ones in the number
+   // __builtin_parity(x): the parity (even or odd) of the number of ones
+
+	int n;
+	cin>>n;
+
+	string s;
+	cin>>s;
+
+	if(n<3){
+		cout<<0;
+		return 0;
+	}
+
+	int i=0,j=1;
+	int count=0;
+
+	while(i<n && j<n){
+		
+		for(int k=j+1;k<n;k++){
+			if(s[i]!=s[j] && s[i]!=s[k] && s[j]!=s[k]){
+				if((j-i)!=(k-j)){
+					count++;
+				}
+			}
+		}
+		i++;j++;
+	}
+
+	cout<<count;
 	//ll t;
 	//cin>>t;
 	//while(t--){
