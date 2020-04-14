@@ -1,4 +1,3 @@
-
 #include<bits/stdc++.h>
 //#include <ext/pb_ds/assoc_container.hpp>
 
@@ -9,8 +8,8 @@ using namespace std;
 #define ll  long long
 
 typedef vector<int> vi;
-typedef pair<int, int> pi;
-typedef unordered_map<int, int> um;
+typedef pair<int,int> pi;
+typedef unordered_map<int,int> um;
 typedef unordered_set<int> us;
 typedef priority_queue<int> pq;
 typedef deque<int> dq;
@@ -30,14 +29,14 @@ tree_order_statistics_node_update> indexed_set; */
 
 void c_p_c()
 {
-
+	
 #ifndef ONLINE_JUDGE
 	freopen("input.txt", "r", stdin);
 	freopen("output.txt", "w", stdout);
 #endif
 }
 
-int main() {
+int main(){
 
 	ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 
@@ -49,23 +48,22 @@ int main() {
 
 	//auto x = s.find_by_order(2);
 	//s.order_of_key(7)
-
+	
 	//c_p_c();
 
-	ll n, k;
-	cin >> n >> k;
-
-	while (k--) {
-		if (n % 10)
-			n -= 1;
-		else
-			n /= 10;
-	}
-	cout << n;
-	return 0;
-}
 	//__builtin_clz(x): the number of zeros at the beginning of the number
    // __builtin_ctz(x): the number of zeros at the end of the number
    // __builtin_popcount(x): the number of ones in the number
    // __builtin_parity(x): the parity (even or odd) of the number of ones
+	
+	
+	//ll t;
+	//cin>>t;
+	//while(t--){
 
+	//}
+
+	return 0;
+	}
+
+		
