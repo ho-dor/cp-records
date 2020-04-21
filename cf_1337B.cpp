@@ -21,26 +21,13 @@ typedef stack<int> st;
 #define pb push_back
 #define mp make_pair
 
-#define rep(i,a,b) for (int i = a; i < b; i++)
+#define rep(i,a,b) for (auto i = a; i < b; i++)
 //#define bitset<n> b<n>
 
 /* typedef tree<int,null_type,less<int>,rb_tree_tag,
 tree_order_statistics_node_update> indexed_set; */
 
-void c_p_c()
-{
-	
-#ifndef ONLINE_JUDGE
-	freopen("input.txt", "r", stdin);
-	freopen("output.txt", "w", stdout);
-#endif
-}
-
-int main(){
-
-	ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
-
-	//indexed_set s;
+//indexed_set s;
 	//s.insert(2);
 	//s.insert(3);
 	//s.insert(7);
@@ -56,13 +43,48 @@ int main(){
    // __builtin_popcount(x): the number of ones in the number
    // __builtin_parity(x): the parity (even or odd) of the number of ones
 
+void c_p_c()
+{
 	
-	
-	//ll t;
-	//cin>>t;
-	//while(t--){
+#ifndef ONLINE_JUDGE
+	freopen("input.txt", "r", stdin);
+	freopen("output.txt", "w", stdout);
+#endif
+}
 
-	//}
+int main(){
+
+	ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+
+	
+	ll t;
+	cin>>t;
+	while(t--){
+		ll x,n,m;
+
+		cin>>x>>n>>m;
+
+		if(m*10>=x){
+			cout<<"YES\n";
+			continue;
+		}
+
+		while(n && x>0){
+			ll next = floor((double)x/2)+10;
+			if(next>x){
+				break;
+			}else{
+				x = floor((double)x/2)+10;
+				n--;
+			}
+		}
+
+		if(m*10>=x){
+			cout<<"YES\n";
+		}else{
+			cout<<"NO\n";
+		}
+	}
 
 	return 0;
 	}

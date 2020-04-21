@@ -21,26 +21,13 @@ typedef stack<int> st;
 #define pb push_back
 #define mp make_pair
 
-#define rep(i,a,b) for (int i = a; i < b; i++)
+#define rep(i,a,b) for (auto i = a; i < b; i++)
 //#define bitset<n> b<n>
 
 /* typedef tree<int,null_type,less<int>,rb_tree_tag,
 tree_order_statistics_node_update> indexed_set; */
 
-void c_p_c()
-{
-	
-#ifndef ONLINE_JUDGE
-	freopen("input.txt", "r", stdin);
-	freopen("output.txt", "w", stdout);
-#endif
-}
-
-int main(){
-
-	ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
-
-	//indexed_set s;
+//indexed_set s;
 	//s.insert(2);
 	//s.insert(3);
 	//s.insert(7);
@@ -56,15 +43,40 @@ int main(){
    // __builtin_popcount(x): the number of ones in the number
    // __builtin_parity(x): the parity (even or odd) of the number of ones
 
+void c_p_c()
+{
 	
-	
-	//ll t;
-	//cin>>t;
-	//while(t--){
+#ifndef ONLINE_JUDGE
+	freopen("input.txt", "r", stdin);
+	freopen("output.txt", "w", stdout);
+#endif
+}
 
-	//}
 
-	return 0;
-	}
-
+vector<int> v(4001,INT_MIN);
+ 
+int main()
+{
+    int n,a,b,c;
+    cin>>n>>a>>b>>c;
+ 
+    
+    int mval;
+    v[a]=1;v[b]=1;v[c]=1;
+    for(int i=0;i<=n;i++)
+    {
+        mval=INT_MIN;
+        if(i-a >= 0)
+        mval=max(mval,v[i-a]+1);
+        if(i-b >= 0)
+        mval=max(mval,v[i-b]+1);
+        if(i-c >= 0)
+        mval=max(mval,v[i-c]+1);
+ 
+        v[i]=max(mval,v[i]);
+    }
+ 
+    cout<<v[n]<<endl;
+    
+}
 		

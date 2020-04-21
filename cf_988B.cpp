@@ -40,15 +40,3 @@ bool compare(string a,string b){
   return a.length()<b.length();
 }
 
-bool isSubstr(string s1,string s2){
-int n1 = s1.length();
-int n2 = s2.length();
-if(n1==n2)
-  return true;
-
-for(int i=0;i<(n2-n1+1);i++){
-  if(s1 == s2.substr(i,n1))
-      return true;
-}
-return false;
-}

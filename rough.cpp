@@ -15,7 +15,10 @@ void c_p_c()
 int main(){
 	
 	//c_p_c();
-	cout<<pow(10,5-1);
+	ll n;
+	cin>>n;
+	double a = sqrt(n);
+	cout<<a;
 	
 	//ll t;
 	//cin>>t;

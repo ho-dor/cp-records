@@ -21,7 +21,7 @@ typedef stack<int> st;
 #define pb push_back
 #define mp make_pair
 
-#define rep(i,a,b) for (int i = a; i < b; i++)
+#define rep(i,a,b) for (auto i = a; i < b; i++)
 //#define bitset<n> b<n>
 
 /* typedef tree<int,null_type,less<int>,rb_tree_tag,
@@ -57,12 +57,33 @@ int main(){
    // __builtin_parity(x): the parity (even or odd) of the number of ones
 
 	
-	
-	//ll t;
-	//cin>>t;
-	//while(t--){
 
-	//}
+	ll t;
+	cin>>t;
+	while(t--){
+		ll n;
+		ll prev_a,prev_b,curr_a,curr_b;
+
+		cin>>n;
+		ll cost = 1e18;
+		
+		vector<ll> a(n);
+		vector<ll> b(n);
+		vector<ll> mi(n);
+
+		rep(i,0,n){
+			cin>>a[i]>>b[i];
+		}
+
+		if()
+
+		for(auto i=1;i<n;i++){
+			
+		}
+
+		cout<<cost<<"\n";
+	
+	}
 
 	return 0;
 	}
