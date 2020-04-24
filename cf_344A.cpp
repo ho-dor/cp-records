@@ -27,20 +27,7 @@ typedef stack<int> st;
 /* typedef tree<int,null_type,less<int>,rb_tree_tag,
 tree_order_statistics_node_update> indexed_set; */
 
-void c_p_c()
-{
-	
-#ifndef ONLINE_JUDGE
-	freopen("input.txt", "r", stdin);
-	freopen("output.txt", "w", stdout);
-#endif
-}
-
-int main(){
-
-	ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
-
-	//indexed_set s;
+//indexed_set s;
 	//s.insert(2);
 	//s.insert(3);
 	//s.insert(7);
@@ -56,36 +43,41 @@ int main(){
    // __builtin_popcount(x): the number of ones in the number
    // __builtin_parity(x): the parity (even or odd) of the number of ones
 
+void c_p_c()
+{
 	
+#ifndef ONLINE_JUDGE
+	freopen("input.txt", "r", stdin);
+	freopen("output.txt", "w", stdout);
+#endif
+}
 
-	ll t;
-	cin>>t;
-	while(t--){
-		ll n;
-		ll prev_a,prev_b,curr_a,curr_b;
+int main(){
 
-		cin>>n;
-		ll cost = 1e18;
-		
-		vector<ll> a(n);
-		vector<ll> b(n);
-		vector<ll> mi(n);
+	ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 
-		rep(i,0,n){
-			cin>>a[i]>>b[i];
-		}
-
-		if()
-
-		for(auto i=1;i<n;i++){
-			
-		}
-
-		cout<<cost<<"\n";
+	ll n;
+	cin>>n;
 	
+	int count=1;
+	string str;
+	cin>>str;
+	string prev = str;
+	rep(i,0,n-1){
+		cin>>str;
+		if(prev!=str){
+			count++;
+		}
+		prev = str;
 	}
+
+	cout<<count;
+	//ll t;
+	//cin>>t;
+	//while(t--){
+
+	//}
 
 	return 0;
 	}
 
-		

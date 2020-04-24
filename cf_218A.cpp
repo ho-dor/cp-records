@@ -21,26 +21,13 @@ typedef stack<int> st;
 #define pb push_back
 #define mp make_pair
 
-#define rep(i,a,b) for (int i = a; i <= b; i++)
+#define rep(i,a,b) for (auto i = a; i < b; i++)
 //#define bitset<n> b<n>
 
 /* typedef tree<int,null_type,less<int>,rb_tree_tag,
 tree_order_statistics_node_update> indexed_set; */
 
-void c_p_c()
-{
-	
-#ifndef ONLINE_JUDGE
-	freopen("input.txt", "r", stdin);
-	freopen("output.txt", "w", stdout);
-#endif
-}
-
-int main(){
-
-	ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
-
-	//indexed_set s;
+//indexed_set s;
 	//s.insert(2);
 	//s.insert(3);
 	//s.insert(7);
@@ -56,13 +43,51 @@ int main(){
    // __builtin_popcount(x): the number of ones in the number
    // __builtin_parity(x): the parity (even or odd) of the number of ones
 
-	ll a,b,c;
-	cin>>a>>b>>c;
+void c_p_c()
+{
+	
+#ifndef ONLINE_JUDGE
+	freopen("input.txt", "r", stdin);
+	freopen("output.txt", "w", stdout);
+#endif
+}
 
-	double m = __gcd(b,c);
+int main(){
 
-	cout<<__gcd(a,m);
+	ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 
+	ll n,m;
+	cin>>n>>m;
+	std::vector<ll> v(2*n+1);
+	rep(i,0,2*n+1){
+		cin>>v[i];
+	}
+
+	ll max=0,index;
+	vector<pair<int,int>> res;
+	while(m--){
+		max=0;
+		rep(i,0,2*n+1){
+			if(max<v[i]){
+				max=v[i];
+				index = i;
+			}
+		}
+		v[index] = max-1;
+		res.pb(make_pair(index,v[index]));
+		v[index] = -1;
+	}
+
+	int len = res.size();
+	for(auto it=0;it<len;it++){
+		index = res[it].first;
+		v[index]=res[it].second;
+	}
+	rep(i,0,2*n+1){
+
+		cout<<v[i]<<" ";
+	}
+	
 	//ll t;
 	//cin>>t;
 	//while(t--){

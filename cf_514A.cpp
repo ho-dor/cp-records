@@ -56,11 +56,28 @@ int main(){
 
 	ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 
-	
-	ll t;
-	cin>>t;
-	while(t--){
-		
+	string str;
+	cin>>str;
+
+	ll n = str.size();
+
+	vector<int> res(n);
+
+	rep(i,0,n){
+		res[i]=str[i]-'0';
+	}
+
+	if(res[0]>=5 && res[0]<9)
+			res[0]=9-(res[0]);
+
+	rep(i,1,n){
+		if(res[i]>=5){
+			res[i]=9-(res[i]);
+		}
+	}
+
+	rep(i,0,n){
+		cout<<res[i];
 	}
 
 	return 0;
