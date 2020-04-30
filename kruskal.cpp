@@ -52,58 +52,68 @@ void c_p_c()
 #endif
 }
 
-vector<bool> visited(100001,false);
-vector<ll> level(100001);
+pair<ll,pair<ll,ll>> p[100001];
+ll dsu[100001],n,m,minimum;
 
-void bfs(auto v, ll s,ll x,auto level){
-	queue<ll> q;
-	
-	q.push(s);
-	visited[s]=true;
-	level[1]=1;
+ll root(ll x){
 
-	while(!q.empty()){
+	while(dsu[x]!=x)
+	{
 
-		ll i = q.front();
-		q.pop();
-		
-		for(auto c: v[i]){
-			if(!visited[c]){
-				level[c]=level[i]+1;
-				q.push(c);
-				visited[i]=true;
-			}
+		dsu[x]=dsu[dsu[x]];
+		x = dsu[x];
+	}
+
+	return x;
+}
+
+void union1(ll x, ll y){
+
+	ll r1=root(x);
+	ll r2=root(y);
+
+	dsu[r1]=dsu[r2];
+}
+
+ll kruskal(auto p){
+
+	rep(i,0,m){
+		ll x = p[i].second.first;
+		ll y = p[i].second.second;
+		ll cost = p[i].first;
+
+		if(root(x)!=root(y)){
+
+			minimum+=cost;
+			union1(x,y);
 		}
 	}
-	ll count=0;
-	for(auto i=0;i<level.size();i++){
-		if(level[i]==x)
-			count++;
-	}
-	cout<<count;
+	return minimum;
 }
 
 int main(){
 
 	ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 
-	ll n;
-	cin>>n;
-	vector<ll> v[n+1];
-	vector<ll> level(n+1);
-	n--;
-	while(n--){
-		ll a,b;
-		cin>>a>>b;
-		v[a].pb(b);
-		v[b].pb(a);
+	cin>>n>>m;
+
+	rep(i,0,100001){
+		dsu[i]=i;
+	}
+	
+	rep(i,0,m){
+		ll x,y,w;
+		cin>>x>>y>>w;
+
+		p[i] = make_pair(w,make_pair(x,y));
+
 	}
 
-	ll x;
-	cin>>x;
+	sort(p,p+m);
 
-	bfs(v,1,x,level);
-	
+	minimum = kruskal(p);
+	cout<<minimum;
+
 	return 0;
 	}
 

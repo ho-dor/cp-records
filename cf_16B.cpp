@@ -52,58 +52,39 @@ void c_p_c()
 #endif
 }
 
-vector<bool> visited(100001,false);
-vector<ll> level(100001);
-
-void bfs(auto v, ll s,ll x,auto level){
-	queue<ll> q;
-	
-	q.push(s);
-	visited[s]=true;
-	level[1]=1;
-
-	while(!q.empty()){
-
-		ll i = q.front();
-		q.pop();
-		
-		for(auto c: v[i]){
-			if(!visited[c]){
-				level[c]=level[i]+1;
-				q.push(c);
-				visited[i]=true;
-			}
-		}
-	}
-	ll count=0;
-	for(auto i=0;i<level.size();i++){
-		if(level[i]==x)
-			count++;
-	}
-	cout<<count;
-}
-
 int main(){
 
 	ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 
-	ll n;
-	cin>>n;
-	vector<ll> v[n+1];
-	vector<ll> level(n+1);
-	n--;
-	while(n--){
+	ll m,n;
+	cin>>m>>n;
+	std::vector<pair<ll,ll>> v(n);
+	ll temp=n;
+
+	rep(i,0,n){
 		ll a,b;
 		cin>>a>>b;
-		v[a].pb(b);
-		v[b].pb(a);
+		v[i] = make_pair(b,a);
 	}
 
-	ll x;
-	cin>>x;
+	sort(v.begin(),v.end(),greater<>());
 
-	bfs(v,1,x,level);
-	
+	ll i=0;
+	ll sum=0;
+
+	while(m>0 && i<n){
+		if(v[i].second<=m){
+			sum += v[i].second*v[i].first;
+			m-=v[i].second;
+		}else{
+			sum += v[i].first*m;
+			m=0;
+		}
+		i++;
+	}
+
+	cout<<sum;
+
 	return 0;
 	}
 

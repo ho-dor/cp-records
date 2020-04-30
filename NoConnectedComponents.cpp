@@ -52,58 +52,49 @@ void c_p_c()
 #endif
 }
 
-vector<bool> visited(100001,false);
-vector<ll> level(100001);
+std::vector<ll> v[100001];
+std::vector<bool> visited(100001,false);
 
-void bfs(auto v, ll s,ll x,auto level){
-	queue<ll> q;
-	
-	q.push(s);
-	visited[s]=true;
-	level[1]=1;
-
-	while(!q.empty()){
-
-		ll i = q.front();
-		q.pop();
-		
-		for(auto c: v[i]){
-			if(!visited[c]){
-				level[c]=level[i]+1;
-				q.push(c);
-				visited[i]=true;
-			}
+void dfs(ll x){
+	visited[x]=true;
+	for(auto c: v[x]){
+		if(!visited[c]){
+			dfs(c);
 		}
 	}
-	ll count=0;
-	for(auto i=0;i<level.size();i++){
-		if(level[i]==x)
-			count++;
-	}
-	cout<<count;
 }
 
 int main(){
 
 	ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 
-	ll n;
-	cin>>n;
-	vector<ll> v[n+1];
-	vector<ll> level(n+1);
-	n--;
-	while(n--){
+	ll n,m;
+	cin>>n>>m;
+
+	while(m--){
 		ll a,b;
 		cin>>a>>b;
+
 		v[a].pb(b);
 		v[b].pb(a);
 	}
 
-	ll x;
-	cin>>x;
+	ll cc=0;
 
-	bfs(v,1,x,level);
-	
+	rep(i,1,n+1){
+		if(!visited[i]){
+			dfs(i);
+			cc++;
+		}
+	}
+
+	cout<<cc;
+	//ll t;
+	//cin>>t;
+	//while(t--){
+
+	//}
+
 	return 0;
 	}
 

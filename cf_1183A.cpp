@@ -52,58 +52,33 @@ void c_p_c()
 #endif
 }
 
-vector<bool> visited(100001,false);
-vector<ll> level(100001);
+int sumOfDig(ll temp){
+	ll sum=0;
+	while(temp>0){
 
-void bfs(auto v, ll s,ll x,auto level){
-	queue<ll> q;
+		int dig = temp%10;
+		sum+=dig;
+		temp/=10; 
 	
-	q.push(s);
-	visited[s]=true;
-	level[1]=1;
-
-	while(!q.empty()){
-
-		ll i = q.front();
-		q.pop();
-		
-		for(auto c: v[i]){
-			if(!visited[c]){
-				level[c]=level[i]+1;
-				q.push(c);
-				visited[i]=true;
-			}
-		}
 	}
-	ll count=0;
-	for(auto i=0;i<level.size();i++){
-		if(level[i]==x)
-			count++;
-	}
-	cout<<count;
+	return sum;
 }
 
 int main(){
 
 	ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 
-	ll n;
+	ll n,sum=0;
 	cin>>n;
-	vector<ll> v[n+1];
-	vector<ll> level(n+1);
-	n--;
-	while(n--){
-		ll a,b;
-		cin>>a>>b;
-		v[a].pb(b);
-		v[b].pb(a);
+
+	while(sumOfDig(n)%4!=0){
+		n=n+1;
 	}
 
-	ll x;
-	cin>>x;
+	cout<<n;
 
-	bfs(v,1,x,level);
-	
+
+
 	return 0;
 	}
 
