@@ -17,7 +17,7 @@ typedef queue<int> q;
 typedef stack<int> st;
 
 #define f first
-#define s second
+//#define s second
 #define pb push_back
 #define mp make_pair
 
@@ -52,28 +52,32 @@ void c_p_c()
 #endif
 }
 
-int main(){
+string result="";
 
-	ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
-
-	ll n;
-	cin>>n;
-	int cost[n][3];
-	
-	rep(i,0,n){
-		rep(j,0,3){
-			cin>>cost[i][j];
-		}
-	}
-
-	rep(i,0,n-1){
-
-			cost[i+1][0] += max(cost[i][1],cost[i][2]);
-			cost[i+1][1] += max(cost[i][0],cost[i][2]);
-			cost[i+1][2] += max(cost[i][0],cost[i][1]);
-	}
-
-	cout<<max({cost[n-1][0],cost[n-1][1],cost[n-1][2]});
-
-	return 0;
-	}
+int lcs(string X, string Y, int m, int n )  
+{  
+    if (m == 0 || n == 0)  
+        return 0;  
+    if (X[m-1] == Y[n-1]){
+    		result+=(X[m-1]);
+    		return 1 + lcs(X, Y, m-1, n-1);
+    	}    
+    else
+        return max(lcs(X, Y, m, n-1), lcs(X, Y, m-1, n));  
+}  
+ 
+  
+/* Driver code */
+int main()  
+{  
+   string str1,str2;
+   cin>>str1>>str2;
+      
+    int m = str1.length();  
+    int n = str2.length();  
+      
+    cout<<lcs(str1, str2, m, n)<<"\n";  
+    cout<<reverse(result);  
+    return 0;  
+}
+		

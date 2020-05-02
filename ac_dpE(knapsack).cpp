@@ -52,28 +52,41 @@ void c_p_c()
 #endif
 }
 
-int main(){
+void max_self(ll& a, ll b) {
+    a = max(a, b);
+}
+void min_self(ll& a, ll b) {
+    a = min(a, b);
+}
 
-	ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+const ll INF = 1e18L + 5;
 
-	ll n;
-	cin>>n;
-	int cost[n][3];
-	
-	rep(i,0,n){
-		rep(j,0,3){
-			cin>>cost[i][j];
-		}
-	}
-
-	rep(i,0,n-1){
-
-			cost[i+1][0] += max(cost[i][1],cost[i][2]);
-			cost[i+1][1] += max(cost[i][0],cost[i][2]);
-			cost[i+1][2] += max(cost[i][0],cost[i][1]);
-	}
-
-	cout<<max({cost[n-1][0],cost[n-1][1],cost[n-1][2]});
-
-	return 0;
-	}
+int main() {
+    int n, W;
+    scanf("%d%d", &n, &W);
+    vector<int> weight(n), value(n);
+    for(int i = 0; i < n; ++i) {
+        scanf("%d%d", &weight[i], &value[i]);
+    }
+    int sum_value = 0;
+    for(int x : value) {
+        sum_value += x;
+    }
+    vector<ll> dp(sum_value + 1, INF); // 0 ... W
+    dp[0] = 0;
+    // dp[i] - the minimum total weight of items with total value exactly i
+    for(int item = 0; item < n; ++item) {
+        for(int value_already = sum_value - value[item]; value_already >= 0; --value_already) {
+        //~ for(int weight_already = 0; weight_already <= W - weight; ++weight_already) {
+            min_self(dp[value_already+value[item]], dp[value_already] + weight[item]);
+        }
+    }
+    ll answer = 0;
+    for(int i = 0; i <= sum_value; ++i) {
+        if(dp[i] <= W) {
+            answer = max(answer, (ll) i);
+        }
+        //~ min_self(answer, dp[i]);
+    }
+    printf("%lld\n", answer);
+}
