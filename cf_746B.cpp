@@ -42,16 +42,34 @@ int main(){
 
 	string str;
 	cin>>str;
-	int i=0;
-	char res[n];
-	while(i<n){
-		
-	}
-	//ll t;
-	//cin>>t;
-	//while(t--){
+	
+	 ll len=str.length();
+	 ll i=1;
+	 
+	 string res;
+	 char start;
 
-	//}
+	 if(len&1)
+	 	start='b';
+	 else
+	 	start='e';
+
+	 res += str[0];
+
+	 while(i<len){
+
+	 	if(start=='b'){
+	 		res.insert(0,1,str[i]);
+	 		start='e';
+	 	}else{
+	 		res+=str[i];
+	 		start='b';
+	 	}
+
+	 	i++;
+	 }
+
+	 cout<<res;
 
 	return 0;
 	}

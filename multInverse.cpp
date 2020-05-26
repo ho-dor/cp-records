@@ -52,16 +52,31 @@ void c_p_c()
 #endif
 }
 
+ll mod_binary_exponentiation(ll a, ll n, ll p){
+	ll res=1;
+	while(n){
+		if(n%2){
+			res = (res*a)%p;
+			n--;
+		}else{
+			a = (a*a)%p;
+			n/=2;
+		}
+	}
+	return res;
+}
+
 int main(){
 
 	ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 
-	long double n;
+	ll n;
 	cin>>n;
-	long double m = 1000000007;
+	ll m = 1000000007;
 
-	ll val = round(m/n);
-	cout<<val;
+	ll ans = mod_binary_exponentiation(n,m-2,m);
+
+	cout<<ans;
 
 	return 0;
 	}

@@ -9,10 +9,6 @@ using namespace std;
 #define P pair<int,int>
 #define pb push_back
 
-const int N = 100005;
-
-int a[N];
-
 struct segment_tree {
 	vector<int> st;
 	void init(int n) {
@@ -82,7 +78,6 @@ void solve() {
 	tree.build(0, n - 1, 0);
 	cout << tree.query(0, n - 1, 0, 3, 0) << '\n';
 	cout << tree.query(0, n - 1, 3, 7, 0) << '\n';
-	tree.update(0, n - 1, 2, 10, 0);
 	cout << tree.query(0, n - 1, 0, 3, 0) << '\n';
 	return ;
 }
