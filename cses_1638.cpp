@@ -36,28 +36,67 @@ int main(){
 
 	ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 
-	ll n;
-	string t;
-	cin>>n>>t;
-	string str="";
-
-	if(t=="10" && n>1){
-		rep(i,0,n-1){
-			str+="1";
-		}
-		str+="0";
-		cout<<str;
-		return 0;
-	}else if(t=="10"){
-		cout<<-1;
-		return 0;
-	}
-
-	rep(i,0,n){
-		str += t;
-	}
-	cout<<str;
 	
+	ll t;
+	cin>>t;
+	
+	char a[t+5][t+5];
+	ll res[t+5][t+5];
+
+	rep(i,0,t){
+		rep(j,0,t){
+			res[i][j]=-1;
+		}
+	}
+
+	rep(i,0,t){
+		
+		rep(j,0,t){
+
+			cin>>a[i][j];
+
+			if(a[i][j]=='*'){
+
+				res[i][j]=0;
+
+			}
+		}
+
+	}
+
+
+	if(a[0][0]=='*'){
+		res[0][0]=0;
+
+	}
+	else{
+		res[0][0]=1;
+	}
+
+	rep(i,1,t){
+		if(res[0][i]!=0)
+			res[0][i]=res[0][i-1];
+
+	}
+
+	rep(i,1,t){
+		if(res[i][0]!=0)
+			res[i][0]=res[i-1][0];
+
+	}
+
+		rep(i,1,t){
+
+			rep(j,1,t){
+				
+				if(res[i][j]!=0)
+					res[i][j] = (res[i-1][j]+res[i][j-1])%1000000007;
+
+			}
+
+		}
+
+		cout<<res[t-1][t-1]<<"\n";
 
 	return 0;
 	}

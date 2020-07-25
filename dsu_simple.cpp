@@ -1,7 +1,4 @@
 #include<bits/stdc++.h>
-//#include <ext/pb_ds/assoc_container.hpp>
-
-//using namespace __gnu_pbds;
 
 using namespace std;
 
@@ -32,32 +29,50 @@ void c_p_c()
 #endif
 }
 
+vector<ll> v;
+vector<ll> parent;
+
+void init(){
+
+	v.resize(1000);
+	
+	for(int i=0;i<1000;i++){
+	
+		v[i]=i;
+		parent[i]=i;
+	
+	}
+
+}
+
+ll get(ll a){
+	if(a==parent[a])
+		return a;
+	return parent[a] = get(parent[a]);
+}
+
+void union_set(ll a,ll b){
+	
+	a = get(a);
+	b = get(b);
+	
+	if(a!=b){
+
+		parent[a]=b;
+
+	}
+
+}
+
 int main(){
 
 	ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 
-	ll n;
-	string t;
-	cin>>n>>t;
-	string str="";
-
-	if(t=="10" && n>1){
-		rep(i,0,n-1){
-			str+="1";
-		}
-		str+="0";
-		cout<<str;
-		return 0;
-	}else if(t=="10"){
-		cout<<-1;
-		return 0;
-	}
-
-	rep(i,0,n){
-		str += t;
-	}
-	cout<<str;
 	
+	init();	
+
+	union_set(1,2);
+	union_set(2,4);
 
 	return 0;
 	}

@@ -1,7 +1,4 @@
 #include<bits/stdc++.h>
-//#include <ext/pb_ds/assoc_container.hpp>
-
-//using namespace __gnu_pbds;
 
 using namespace std;
 
@@ -36,27 +33,36 @@ int main(){
 
 	ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 
-	ll n;
-	string t;
-	cin>>n>>t;
-	string str="";
-
-	if(t=="10" && n>1){
-		rep(i,0,n-1){
-			str+="1";
-		}
-		str+="0";
-		cout<<str;
-		return 0;
-	}else if(t=="10"){
-		cout<<-1;
-		return 0;
-	}
+	
+	ll n,val;
+	cin>>n;
+	
+	vector<ll> v(n);
 
 	rep(i,0,n){
-		str += t;
+	
+		cin>>v[i];
+	
 	}
-	cout<<str;
+
+	map<ll,ll> mp;
+	int ans=0;
+
+	for(int i=0,j=0;i<n;i++){
+		
+		while(j<n && mp[v[j]]<1){
+
+			mp[v[j]]++;
+			++j;
+		
+		}
+	  
+	  ans = max(j-i , ans);
+	  mp[v[i]]--;
+
+	}
+
+	cout<<ans;
 	
 
 	return 0;

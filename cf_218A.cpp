@@ -59,42 +59,33 @@ int main(){
 	ll n,m;
 	cin>>n>>m;
 	std::vector<ll> v(2*n+1);
+
 	rep(i,0,2*n+1){
 		cin>>v[i];
 	}
 
-	ll max=0,index;
-	vector<pair<int,int>> res;
-	while(m--){
-		max=0;
-		rep(i,0,2*n+1){
-			if(max<v[i]){
-				max=v[i];
-				index = i;
-			}
-		}
-		v[index] = max-1;
-		res.pb(make_pair(index,v[index]));
-		v[index] = -1;
-	}
+	ll i=1;
+	
+	while(m>0 && i<2*n){
+	
+		if(v[i]-v[i-1]>1 && v[i]-v[i+1]>1){
 
-	int len = res.size();
-	for(auto it=0;it<len;it++){
-		index = res[it].first;
-		v[index]=res[it].second;
+			v[i]--;
+			m--;
+
+		}
+
+		i+=2;
+			
 	}
+	
 	rep(i,0,2*n+1){
 
 		cout<<v[i]<<" ";
 	}
 	
-	//ll t;
-	//cin>>t;
-	//while(t--){
-
-	//}
-
 	return 0;
-	}
+	
+}
 
 		

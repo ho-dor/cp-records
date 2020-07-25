@@ -36,28 +36,75 @@ int main(){
 
 	ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 
-	ll n;
-	string t;
-	cin>>n>>t;
-	string str="";
-
-	if(t=="10" && n>1){
-		rep(i,0,n-1){
-			str+="1";
-		}
-		str+="0";
-		cout<<str;
-		return 0;
-	}else if(t=="10"){
-		cout<<-1;
-		return 0;
-	}
-
-	rep(i,0,n){
-		str += t;
-	}
-	cout<<str;
 	
+	ll t;
+	cin>>t;
+
+	std::vector<ll> v1;
+	std::vector<ll> v2;
+
+	ll temp = t;
+
+	rep(i,0,t){
+
+		ll a,b;
+		cin>>a>>b;
+
+		v1.pb(a);
+		v2.pb(b);
+
+	}
+
+
+	sort(v1.begin(),v1.end());
+	sort(v2.begin(),v2.end());
+
+	ll i=0,j=0;
+	
+	ll count=0; ll max=0;
+	
+	while(i<t && j<t){
+
+		if(v1[i]<v2[j]){
+			count++; 
+
+			if(max<count){
+				max=count;
+			}
+   
+			i++;
+		}
+
+		else if(v1[i]>v2[j]){
+			count--;
+
+			if(max<count){
+				max=count;
+			}
+
+			j++;
+		}
+
+		else{
+
+			i++;
+			j++;
+		
+		}
+
+	}
+
+	if(i<t){
+		count += t-i;
+	}else if(j<t){
+		count -= t-j;
+	}
+
+	if(max<count){
+		max=count;
+	}
+
+	cout<<max<<"\n";
 
 	return 0;
 	}

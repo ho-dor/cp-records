@@ -32,32 +32,43 @@ void c_p_c()
 #endif
 }
 
+ll mme(ll a, ll n, ll p){
+
+	ll res=1;
+
+	while(n){
+		if(n%2){
+			res = (res*a)%p;
+			n--;
+		}else{
+			a = (a*a)%p;
+			n/=2;
+		}
+	}
+	return res;
+
+}
+
 int main(){
 
 	ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 
-	ll n;
-	string t;
-	cin>>n>>t;
-	string str="";
-
-	if(t=="10" && n>1){
-		rep(i,0,n-1){
-			str+="1";
-		}
-		str+="0";
-		cout<<str;
-		return 0;
-	}else if(t=="10"){
-		cout<<-1;
-		return 0;
-	}
-
-	rep(i,0,n){
-		str += t;
-	}
-	cout<<str;
 	
+	ll t;
+	cin>>t;
+
+	while(t--){
+
+		ll a,b,c;
+		cin>>a>>b>>c;
+
+		ll m = mme(b,c,1000000006);
+
+		ll ans = mme(a,m,1000000007);
+
+		cout<<ans<<"\n";
+
+	}
 
 	return 0;
 	}

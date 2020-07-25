@@ -36,28 +36,50 @@ int main(){
 
 	ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 
-	ll n;
-	string t;
-	cin>>n>>t;
-	string str="";
+	
+	ll n,k,val;
+	cin>>n>>k;
 
-	if(t=="10" && n>1){
-		rep(i,0,n-1){
-			str+="1";
-		}
-		str+="0";
-		cout<<str;
-		return 0;
-	}else if(t=="10"){
-		cout<<-1;
-		return 0;
-	}
+	vector<pair<ll,ll>> v(n);
 
 	rep(i,0,n){
-		str += t;
+		cin>>val;
+
+		v[i] = make_pair(val,i+1);
 	}
-	cout<<str;
-	
+
+	sort(v.begin(),v.end());
+
+	// rep(i,0,n){
+	// 	cout<<v[i]<<" ";
+	// }
+
+	ll i=0,j=n-1;
+
+	while(i<j){
+
+		if(v[i].f + v[j].f == k){
+			if(v[i].s<v[j].s)
+				cout<<v[i].s<<" "<<v[j].s<<"\n";
+			else
+				cout<<v[j].s<<" "<<v[i].s<<"\n";
+			return 0;
+		
+		}
+
+		if(v[i].f + v[j].f < k){
+			
+			i++;
+		}
+
+		else if(v[i].f + v[j].f > k){
+			
+			j--;
+		}
+
+	}
+
+	cout<<"IMPOSSIBLE\n";
 
 	return 0;
 	}

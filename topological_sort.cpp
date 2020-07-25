@@ -1,7 +1,4 @@
 #include<bits/stdc++.h>
-//#include <ext/pb_ds/assoc_container.hpp>
-
-//using namespace __gnu_pbds;
 
 using namespace std;
 
@@ -32,35 +29,66 @@ void c_p_c()
 #endif
 }
 
+vector<int> graph[10005];
+vector<bool> visited(10005);
+std::list<ll> lst;
 
-std::vector<ll> visited(105);
-std::vector<ll> v[105];
-std::vector<ll> color(105);
+
+void topo_sort(ll c){
+
+	visited[c]=true;
+
+	for(auto ch: graph[c]){
+
+		if(!visited[ch]){
+			
+			topo_sort(ch);
+		
+		}
+
+	}
+	
+	lst.push_front(c);
+
+}
+
+void dfs(ll i, ll n){
+
+	visited[i]=true;
+
+	for(int t=0;t<n;t++){
+		if(!visited[t])
+			topo_sort(t);
+	}
+
+}
 
 int main(){
 
 	ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 
-	ll n,m;
+	int n,m;
 	cin>>n>>m;
 
-	rep(i,0,m){
+	
+	ll a,b;
 
-		ll a,b;
+	for(int i=0;i<m;i++){
+		
 		cin>>a>>b;
-
-		v[a].pb(b);
-		v[b].pb(a);
+		graph[a].pb(b);
 
 	}
 
-	rep(i,1,n+1){
+	dfs(0,n);
+	
+	cout<<0<<" ";
 
-		
-		
-	}
+	 for (auto itr = lst.begin(); itr != lst.end(); itr++) 
+        cout << *itr << " "; 
 
 	return 0;
+	
 	}
 
 		

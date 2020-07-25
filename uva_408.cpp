@@ -1,7 +1,4 @@
 #include<bits/stdc++.h>
-//#include <ext/pb_ds/assoc_container.hpp>
-
-//using namespace __gnu_pbds;
 
 using namespace std;
 
@@ -36,28 +33,32 @@ int main(){
 
 	ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 
-	ll n;
-	string t;
-	cin>>n>>t;
-	string str="";
+	ll step,mod;
 
-	if(t=="10" && n>1){
-		rep(i,0,n-1){
-			str+="1";
+	while(cin>>step>>mod){
+
+		std::vector<bool> v(mod);
+		ll seed = 0;
+
+		rep(i,0,mod){
+
+			seed = (seed+step)%mod;
+			v[seed]=true;
+
 		}
-		str+="0";
-		cout<<str;
-		return 0;
-	}else if(t=="10"){
-		cout<<-1;
-		return 0;
-	}
 
-	rep(i,0,n){
-		str += t;
+		cout<<step<<" "<<mod<<" ";
+
+		if(count(v.begin(),v.end(),false)){
+			
+			cout<<"Bad Choice\n";
+		}
+		else{
+			cout<<"Good Choice\n";
+		}
+
+		cout<<"\n";
 	}
-	cout<<str;
-	
 
 	return 0;
 	}

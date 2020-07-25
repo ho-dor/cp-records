@@ -1,7 +1,4 @@
 #include<bits/stdc++.h>
-//#include <ext/pb_ds/assoc_container.hpp>
-
-//using namespace __gnu_pbds;
 
 using namespace std;
 
@@ -37,27 +34,38 @@ int main(){
 	ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 
 	ll n;
-	string t;
-	cin>>n>>t;
-	string str="";
+	cin>>n;
 
-	if(t=="10" && n>1){
-		rep(i,0,n-1){
-			str+="1";
-		}
-		str+="0";
-		cout<<str;
-		return 0;
-	}else if(t=="10"){
-		cout<<-1;
-		return 0;
-	}
+	std::vector<ll> v(n);
+	
+	ll i=0,j=n-1;
 
 	rep(i,0,n){
-		str += t;
+		cin>>v[i];
 	}
-	cout<<str;
+
+	ll sereja=0,dima=0;
+	bool flag=true;
+
+	while(i<=j){
+
+		ll curr = max(v[i],v[j]);
+
+		if(flag){
+			sereja+=curr;
+		}else{
+			dima+=curr;
+		}
+
+		flag = !flag;
 	
+		if(v[i]>v[j])
+			i++;
+		else
+			j--;
+	}
+
+	cout<<sereja<<" "<<dima<<"\n";
 
 	return 0;
 	}

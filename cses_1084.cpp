@@ -36,28 +36,52 @@ int main(){
 
 	ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 
-	ll n;
-	string t;
-	cin>>n>>t;
-	string str="";
+	
+	ll n,m,k;
+	cin>>n>>m>>k;
 
-	if(t=="10" && n>1){
-		rep(i,0,n-1){
-			str+="1";
-		}
-		str+="0";
-		cout<<str;
-		return 0;
-	}else if(t=="10"){
-		cout<<-1;
-		return 0;
-	}
+	std::vector<ll> nob(n);
+	std::vector<ll> nor(m);
 
 	rep(i,0,n){
-		str += t;
+		cin>>nob[i];
 	}
-	cout<<str;
+
+	rep(i,0,m){
+		cin>>nor[i];
+	}
+
+	ll i=0,j=0;
 	
+	ll count=0;
+
+	sort(nob.begin(),nob.end());
+	sort(nor.begin(),nor.end());  //what an idiot. 
+
+	while(i<n && j<m){
+
+		if(nob[i]-k<=nor[j] && nob[i]+k>=nor[j]){
+
+			count++;
+			i++;j++;
+
+		}
+
+		else if(nob[i]-k>nor[j]){
+
+			j++;
+
+		}
+
+		else if(nob[i]+k<nor[j]){
+
+			i++;
+
+		}
+
+	}
+
+	cout<<count<<"\n";
 
 	return 0;
 	}

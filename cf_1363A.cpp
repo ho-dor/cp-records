@@ -21,11 +21,27 @@ typedef stack<int> st;
 #define pb push_back
 #define mp make_pair
 
-#define rep(i,a,b) for (int i = a; i <= b; i++)
+#define rep(i,a,b) for (auto i = a; i < b; i++)
 //#define bitset<n> b<n>
 
 /* typedef tree<int,null_type,less<int>,rb_tree_tag,
 tree_order_statistics_node_update> indexed_set; */
+
+//indexed_set s;
+	//s.insert(2);
+	//s.insert(3);
+	//s.insert(7);
+	//s.insert(9);
+
+	//auto x = s.find_by_order(2);
+	//s.order_of_key(7)
+	
+	//c_p_c();
+
+	//__builtin_clz(x): the number of zeros at the beginning of the number
+   // __builtin_ctz(x): the number of zeros at the end of the number
+   // __builtin_popcount(x): the number of ones in the number
+   // __builtin_parity(x): the parity (even or odd) of the number of ones
 
 void c_p_c()
 {
@@ -40,60 +56,50 @@ int main(){
 
 	ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 
-	ll n;
-	cin>>n;
+	
+	ll t;
+	cin>>t;
+	while(t--){
 
-	ll sum = n*(n+1)/2;
+		ll n,x,val;
+		cin>>n>>x;
 
-	std::vector<ll> v1;
-	std::vector<ll> v2;
+		ll even = 0,odd=0;
+		ll sum=0;
 
-	if(sum&1)
-		cout<<"NO";
-	else{
+		rep(i,0,n){
 		
-		cout<<"YES\n";
-		
-		ll j=4;
+			cin>>val;
 
-		if(n%4)
-			j=3;
-
-		for(int i=0;i<(n-1)/4;i++){
-
-			v1.pb(4*i+1+j);
-			v1.pb(4*i+4+j);
-			v2.pb(4*i+2+j);
-			v2.pb(4*i+3+j);
+			sum += val;
+			
+			if(val%2)
+				odd++;
+			else
+				even++;
 		
 		}
 
-		if(n%4){
+		if(odd%2!=0){
 		
-			v1.pb(1);
-			v1.pb(2);
-			v2.pb(3);
+			cout<<"Yes\n";
 		
 		}
+		
+		else if(odd==0){
+		
+			cout<<"No\n"
+		
+		}
+		
 		else{
 
-			v1.pb(1);
-			v2.pb(2);
-			v2.pb(3);
-			v1.pb(4);
-		
-		}
+			if(n%2!=0){
 
-		cout<<v1.size()<<"\n";
-		for(auto v: v1){
-			cout<<v<<" ";
-		}
+				
+				
+			}
 
-		cout<<"\n";
-
-		cout<<v2.size()<<"\n";
-		for(auto v: v2){
-			cout<<v<<" ";
 		}
 
 	}

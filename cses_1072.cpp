@@ -1,7 +1,4 @@
 #include<bits/stdc++.h>
-//#include <ext/pb_ds/assoc_container.hpp>
-
-//using namespace __gnu_pbds;
 
 using namespace std;
 
@@ -22,10 +19,6 @@ typedef stack<int> st;
 #define mp make_pair
 
 #define rep(i,a,b) for (int i = a; i <= b; i++)
-//#define bitset<n> b<n>
-
-/* typedef tree<int,null_type,less<int>,rb_tree_tag,
-tree_order_statistics_node_update> indexed_set; */
 
 void c_p_c()
 {
@@ -47,28 +40,12 @@ ll solve(ll n){
 
 	ll ans = total/2 - 4*(n-2)*(n-1); 
 
-return ans;
+	return ans;
 }
 
 int main(){
 
 	ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
-
-	//indexed_set s;
-	//s.insert(2);
-	//s.insert(3);
-	//s.insert(7);
-	//s.insert(9);
-
-	//auto x = s.find_by_order(2);
-	//s.order_of_key(7)
-	
-	//c_p_c();
-
-	//__builtin_clz(x): the number of zeros at the beginning of the number
-   // __builtin_ctz(x): the number of zeros at the end of the number
-   // __builtin_popcount(x): the number of ones in the number
-   // __builtin_parity(x): the parity (even or odd) of the number of ones
 
 	ll n;
 	cin>>n;
@@ -78,12 +55,6 @@ int main(){
 		cout<<solve(i)<<"\n";
 	
 	}
-
-	//ll t;
-	//cin>>t;
-	//while(t--){
-
-	//}
 
 	return 0;
 	}

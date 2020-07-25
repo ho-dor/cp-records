@@ -36,28 +36,29 @@ int main(){
 
 	ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 
-	ll n;
-	string t;
-	cin>>n>>t;
-	string str="";
+	while(true){
 
-	if(t=="10" && n>1){
-		rep(i,0,n-1){
-			str+="1";
+		ll t;
+		cin>>t;
+
+		if(t==0)
+			break;
+		
+		ll cnt=0;
+		
+		rep(i,1,t+1){
+		
+			if(t%i==0)
+				cnt++;
+		
 		}
-		str+="0";
-		cout<<str;
-		return 0;
-	}else if(t=="10"){
-		cout<<-1;
-		return 0;
-	}
 
-	rep(i,0,n){
-		str += t;
+		if(cnt%2==0)
+			cout<<"no\n";
+		else
+			cout<<"yes\n";
+
 	}
-	cout<<str;
-	
 
 	return 0;
 	}

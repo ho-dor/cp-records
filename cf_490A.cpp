@@ -1,7 +1,4 @@
 #include<bits/stdc++.h>
-//#include <ext/pb_ds/assoc_container.hpp>
-
-//using namespace __gnu_pbds;
 
 using namespace std;
 
@@ -36,28 +33,41 @@ int main(){
 
 	ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 
-	ll n;
-	string t;
-	cin>>n>>t;
-	string str="";
-
-	if(t=="10" && n>1){
-		rep(i,0,n-1){
-			str+="1";
-		}
-		str+="0";
-		cout<<str;
-		return 0;
-	}else if(t=="10"){
-		cout<<-1;
-		return 0;
-	}
+	std::vector<ll> one;
+	std::vector<ll> two;
+	std::vector<ll> three;
+	std::vector<ll> v;
+	ll n,val;
+	cin>>n;
 
 	rep(i,0,n){
-		str += t;
+		cin>>val;
+		v.pb(val);
+
+		switch(val){
+
+			case 1: one.pb(i+1); 
+			break;
+		
+			case 2: two.pb(i+1);
+			break;
+		
+			case 3: three.pb(i+1);
+			break;
+		
+		}
 	}
-	cout<<str;
-	
+
+	ll ans = min(count(v.begin(),v.end(),1),min(count(v.begin(),v.end(),2),count(v.begin(),v.end(),3)));
+
+	cout<<ans<<"\n";
+
+	int i=0;
+	while(ans--){
+
+		cout<<one[i]<<" "<<two[i]<<" "<<three[i]<<"\n";
+		i++;
+	}
 
 	return 0;
 	}

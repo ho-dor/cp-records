@@ -36,28 +36,26 @@ int main(){
 
 	ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 
-	ll n;
-	string t;
-	cin>>n>>t;
-	string str="";
-
-	if(t=="10" && n>1){
-		rep(i,0,n-1){
-			str+="1";
-		}
-		str+="0";
-		cout<<str;
-		return 0;
-	}else if(t=="10"){
-		cout<<-1;
-		return 0;
-	}
-
-	rep(i,0,n){
-		str += t;
-	}
-	cout<<str;
 	
+	string s;
+	cin>>s;
+	std::vector<ll> v;
+
+	rep(i,0,s.length()){
+		if(s[i]!='+'){
+			v.pb(s[i]-'0');
+		}
+	}
+
+	sort(v.begin(),v.end());
+
+	ll n = v.size();
+
+	rep(i,0,n-1){
+		cout<<v[i]<<"+";
+	}
+
+	cout<<v[n-1]<<"\n";
 
 	return 0;
 	}

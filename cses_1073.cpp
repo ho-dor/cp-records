@@ -1,7 +1,4 @@
 #include<bits/stdc++.h>
-//#include <ext/pb_ds/assoc_container.hpp>
-
-//using namespace __gnu_pbds;
 
 using namespace std;
 
@@ -23,40 +20,47 @@ typedef stack<int> st;
 
 #define rep(i,a,b) for (auto i = a; i < b; i++)
 
-void c_p_c()
-{
-	
-#ifndef ONLINE_JUDGE
-	freopen("input.txt", "r", stdin);
-	freopen("output.txt", "w", stdout);
-#endif
-}
 
 int main(){
 
 	ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 
 	ll n;
-	string t;
-	cin>>n>>t;
-	string str="";
+	cin>>n;
 
-	if(t=="10" && n>1){
-		rep(i,0,n-1){
-			str+="1";
-		}
-		str+="0";
-		cout<<str;
-		return 0;
-	}else if(t=="10"){
-		cout<<-1;
-		return 0;
-	}
+	std::vector<ll> v(n);
 
 	rep(i,0,n){
-		str += t;
+
+		cin>>v[i];
+	
 	}
-	cout<<str;
+
+	multiset<ll> s;
+
+	s.insert(v[0]);
+	ll count=1;
+
+	rep(i,1,n){
+
+		auto it = s.upper_bound(v[i]);
+
+		if(it!=s.end()){
+
+			s.erase(it);
+			s.insert(v[i]);
+		
+		}
+		
+		else{
+		
+			s.insert(v[i]);
+			count++;
+		}
+
+	}
+
+	cout<<count<<"\n";
 	
 
 	return 0;

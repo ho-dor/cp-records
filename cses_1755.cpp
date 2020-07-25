@@ -1,7 +1,4 @@
 #include<bits/stdc++.h>
-//#include <ext/pb_ds/assoc_container.hpp>
-
-//using namespace __gnu_pbds;
 
 using namespace std;
 
@@ -36,28 +33,66 @@ int main(){
 
 	ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 
-	ll n;
-	string t;
-	cin>>n>>t;
-	string str="";
-
-	if(t=="10" && n>1){
-		rep(i,0,n-1){
-			str+="1";
-		}
-		str+="0";
-		cout<<str;
-		return 0;
-	}else if(t=="10"){
-		cout<<-1;
-		return 0;
-	}
-
-	rep(i,0,n){
-		str += t;
-	}
-	cout<<str;
 	
+	string s;
+	cin>>s;
+
+	int v[26]={};
+
+	for(auto c: s){
+		v[c-'A']++;
+	}
+
+	ll cnt=0;
+
+	for(int i=0;i<26;i++){
+		
+		if(v[i]&1)
+			cnt++;
+	
+	}
+
+	if(cnt>1){
+	
+		cout<<"NO SOLUTION\n";
+		return 0;
+	
+	}
+
+	string t;
+
+	for(int i=0;i<26;i++){
+	
+		if(v[i]&1^1){
+
+			for(int j=0;j<v[i]/2;j++)
+	
+				t+= (char)('A'+i);
+	
+		}
+	
+	}
+
+	cout<<t;
+
+	for(int i=0;i<26;i++){
+
+		if(v[i]&1){
+	
+			for(int j=0;j<v[i];j++){
+	
+				cout<<(char)('A'+i);
+	
+			}
+	
+		}
+
+	
+	}
+
+	reverse(t.begin(),t.end());
+
+	cout<<t;
 
 	return 0;
 	}

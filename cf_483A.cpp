@@ -1,7 +1,4 @@
 #include<bits/stdc++.h>
-//#include <ext/pb_ds/assoc_container.hpp>
-
-//using namespace __gnu_pbds;
 
 using namespace std;
 
@@ -32,32 +29,29 @@ void c_p_c()
 #endif
 }
 
+ll gcd(ll a,ll b){
+	if(b==0)
+		return a;
+	return (b,b%a);
+}
+
 int main(){
 
 	ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 
-	ll n;
-	string t;
-	cin>>n>>t;
-	string str="";
+	
+	ll l,r;
+	cin>>l>>r;
+	
+	if(l&1)
+		l++;
 
-	if(t=="10" && n>1){
-		rep(i,0,n-1){
-			str+="1";
-		}
-		str+="0";
-		cout<<str;
-		return 0;
-	}else if(t=="10"){
+	if(l+2>r){
 		cout<<-1;
 		return 0;
 	}
 
-	rep(i,0,n){
-		str += t;
-	}
-	cout<<str;
-	
+	cout<<l<<" "<<l+1<<" "<<l+2;
 
 	return 0;
 	}

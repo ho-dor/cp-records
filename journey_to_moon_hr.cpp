@@ -1,7 +1,4 @@
 #include<bits/stdc++.h>
-//#include <ext/pb_ds/assoc_container.hpp>
-
-//using namespace __gnu_pbds;
 
 using namespace std;
 
@@ -32,21 +29,37 @@ void c_p_c()
 #endif
 }
 
+std::vector<ll> v[10005];
+std::vector<bool> visited(10005,false);
 
-std::vector<ll> visited(105);
-std::vector<ll> v[105];
-std::vector<ll> color(105);
+void dfs(ll node,ll &ans){
+
+	visited[node]=true;
+	
+	for(auto c:v[node]){
+	
+		if(!visited[c]){
+			ans++;
+			dfs(c,ans);
+	
+		}
+	
+	}
+
+}
 
 int main(){
 
 	ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 
-	ll n,m;
+	ll m,n;
+
 	cin>>n>>m;
 
-	rep(i,0,m){
+	ll a,b;
 
-		ll a,b;
+	for(int i=0;i<m;i++){
+
 		cin>>a>>b;
 
 		v[a].pb(b);
@@ -54,11 +67,27 @@ int main(){
 
 	}
 
-	rep(i,1,n+1){
+	ll total = (n*(n-1))/2;
 
+	ll ans=1;
+
+	dfs(0,ans);
+
+	total -= (ans*(ans-1))/2;
+
+	for(int i=0;i<n;i++){
+
+		if(!visited[i]){
 		
+			ans=1;
+			dfs(i,ans);
+			total -= (ans*(ans-1))/2;; 
 		
+		}
+	
 	}
+
+	cout<<total<<"\n";
 
 	return 0;
 	}

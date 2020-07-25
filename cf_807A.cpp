@@ -1,7 +1,4 @@
 #include<bits/stdc++.h>
-//#include <ext/pb_ds/assoc_container.hpp>
-
-//using namespace __gnu_pbds;
 
 using namespace std;
 
@@ -36,28 +33,42 @@ int main(){
 
 	ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 
-	ll n;
-	string t;
-	cin>>n>>t;
-	string str="";
-
-	if(t=="10" && n>1){
-		rep(i,0,n-1){
-			str+="1";
-		}
-		str+="0";
-		cout<<str;
-		return 0;
-	}else if(t=="10"){
-		cout<<-1;
-		return 0;
-	}
-
-	rep(i,0,n){
-		str += t;
-	}
-	cout<<str;
 	
+	ll t;
+	cin>>t;
+	ll temp = t;
+	std::vector<pair<ll,ll>> v;
+
+	while(temp--){
+	
+		ll a,b;
+		cin>>a>>b;
+
+		v.pb(make_pair(a,b));
+	
+	}
+
+	rep(i,0,t){
+	
+		if((v[i].f)!= (v[i].s)){
+	
+			cout<<"rated\n";
+			return 0;
+	
+		}
+	
+	}
+
+	if(is_sorted(v.rbegin(),v.rend())){
+	
+		cout<<"maybe\n";
+	
+	}
+	else{
+	
+		cout<<"unrated\n";
+	
+	}
 
 	return 0;
 	}

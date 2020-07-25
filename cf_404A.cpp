@@ -1,7 +1,4 @@
 #include<bits/stdc++.h>
-//#include <ext/pb_ds/assoc_container.hpp>
-
-//using namespace __gnu_pbds;
 
 using namespace std;
 
@@ -36,28 +33,50 @@ int main(){
 
 	ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 
+	
 	ll n;
-	string t;
-	cin>>n>>t;
-	string str="";
+	cin>>n;
 
-	if(t=="10" && n>1){
-		rep(i,0,n-1){
-			str+="1";
+	char a[n][n];
+
+	rep(i,0,n){
+		rep(j,0,n){
+			cin>>a[i][j];
 		}
-		str+="0";
-		cout<<str;
-		return 0;
-	}else if(t=="10"){
-		cout<<-1;
+	}
+
+	char dia = a[0][0];
+	char non = a[0][1];
+
+	if(non==dia){
+		cout<<"NO\n";
 		return 0;
 	}
 
 	rep(i,0,n){
-		str += t;
-	}
-	cout<<str;
-	
+		rep(j,0,n){
+			if(i==j){
+				if(a[i][j]!=dia){
+					cout<<"NO\n";
+					return 0;
+				}
+			}
+			else if(i+j==n-1){
+				if(a[i][j]!=dia){
+					cout<<"NO\n";
+					return 0;
+				}
+			}
+			else{
+				if(a[i][j]!=non){
+					cout<<"NO\n";
+					return 0;
+				}
+			}
+		}
+	} 
+
+	cout<<"YES\n";
 
 	return 0;
 	}

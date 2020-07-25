@@ -32,34 +32,61 @@ void c_p_c()
 #endif
 }
 
+std::vector<ll> v[10005];
+std::vector<bool> visited(10005);
+
+bool dfs(ll node, ll parent){
+
+	visited[node]=true;
+
+	for(auto c: v[node]){
+		
+		if(!visited[c]){
+		
+			dfs(c,node);
+		
+		}
+
+		else{
+		
+			if(c!=parent){
+		
+				return true;
+		
+			}
+		
+		}
+	
+	}
+
+	return false;
+
+}
+
 int main(){
 
-	ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+	ios_base::sync_with_stdio(0); 
+	cin.tie(0);
+	cout.tie(0);
 
-	ll n;
-	string t;
-	cin>>n>>t;
-	string str="";
+	ll n,m;
+	cin>>n>>m;
 
-	if(t=="10" && n>1){
-		rep(i,0,n-1){
-			str+="1";
-		}
-		str+="0";
-		cout<<str;
-		return 0;
-	}else if(t=="10"){
-		cout<<-1;
-		return 0;
-	}
+	ll a,b;
 
-	rep(i,0,n){
-		str += t;
-	}
-	cout<<str;
+	for(int i=0;i<m;i++){
+		
+		cin>>a>>b;
+
+		v[a].pb(b);
+		v[b].pb(a);
 	
+	}	
+
+	cout<<dfs(0,0);
 
 	return 0;
-	}
+	
+}
 
 		
