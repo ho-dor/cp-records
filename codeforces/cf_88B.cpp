@@ -32,61 +32,26 @@ void c_p_c()
 #endif
 }
 
-std::vector<ll> v[10005];
-std::vector<bool> visited(10005);
+double dist(pair<ll,ll> p1, pair<ll,ll> p2){
 
-bool dfs(ll node, ll parent){
+	cout<<sqrt((p1.f-p2.f)*(p1.f-p2.f) + (p1.s-p2.s)*(p1.s-p2.s))<<" ";
 
-	visited[node]=true;
+	double ans = sqrt((p1.f-p2.f)*(p1.f-p2.f) + (p1.s-p2.s)*(p1.s-p2.s));
 
-	for(auto c: v[node]){
-		
-		if(!visited[c]){
-		
-			dfs(c,node);
-		
-		}
-
-		else{
-		
-			if(c!=parent){
-		
-				return true;
-		
-			}
-		
-		}
-	
-	}
-
-	return false;
+	return ans;
 
 }
 
 int main(){
 
-	ios_base::sync_with_stdio(0); 
-	cin.tie(0);
-	cout.tie(0);
+	ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 
-	ll n,m;
-	cin>>n>>m;
+	ll n,m,x;
+	cin>>n>>m>>x;
 
-	ll a,b;
-
-	for(int i=0;i<m;i++){
-		
-		cin>>a>>b;
-
-		v[a].pb(b);
-		v[b].pb(a);
 	
-	}	
-
-	cout<<dfs(0,0);
 
 	return 0;
-	
-}
+	}
 
 		

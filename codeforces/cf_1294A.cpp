@@ -23,6 +23,7 @@ typedef stack<int> st;
 
 #define rep(i,a,b) for (auto i = a; i < b; i++)
 
+
 void c_p_c()
 {
 	
@@ -37,8 +38,37 @@ int main(){
 	ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 
 	
+	ll t;
+	cin>>t;
+	while(t--){
+
+		ll n;
+
+		int a[3];
+
+		cin>>a[0]>>a[1]>>a[2]>>n;
+
+		sort(a,a+3);
+
+		bool val = n < (2*a[2]-a[1]-a[0]) ? true: false;
+
+		bool val2 =  (n - (2*a[2] - a[1] - a[0]))%3==0 ? true:false;
+
+		if(val){
+			cout<<"NO\n";
+		}
+
+		else if(val2){
+			cout<<"YES\n";
+
+		}
+		else{
+			cout<<"NO\n";
+		}
+
+	}
+
 	return 0;
-	
 	}
 
 		
